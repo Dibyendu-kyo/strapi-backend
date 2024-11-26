@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "logical_reasoning_single_pages",
+  "info": {
+    "singularName": "logical-reasoning-single-page",
+    "pluralName": "logical-reasoning-single-pages",
+    "displayName": "Logical Reasoning Single Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "logical_reasoning_content_content": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::logical-reasoning-content-content.logical-reasoning-content-content",
+      "inversedBy": "logical_reasoning_single_pages"
+    }
+  }
+}

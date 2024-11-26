@@ -442,6 +442,209 @@ export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLogicalReasoningBlockLogicalReasoningBlock
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'logical_reasoning_blocks';
+  info: {
+    displayName: 'Logical Reasoning Block';
+    pluralName: 'logical-reasoning-blocks';
+    singularName: 'logical-reasoning-block';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-block.logical-reasoning-block'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    topics: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-topic.logical-reasoning-topic'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLogicalReasoningContentContentLogicalReasoningContentContent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'logical_reasoning_content_contents';
+  info: {
+    displayName: 'Logical Reasoning Content_Content';
+    pluralName: 'logical-reasoning-content-contents';
+    singularName: 'logical-reasoning-content-content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::logical-reasoning-content.logical-reasoning-content'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-content-content.logical-reasoning-content-content'
+    > &
+      Schema.Attribute.Private;
+    logical_reasoning_single_pages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-single-page.logical-reasoning-single-page'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      [
+        'Overview',
+        'Content',
+        'Exam Specific Concept',
+        'Company Specific',
+        'FAQ',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLogicalReasoningContentLogicalReasoningContent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'logical_reasoning_contents';
+  info: {
+    displayName: 'Logical Reasoning Content';
+    pluralName: 'logical-reasoning-contents';
+    singularName: 'logical-reasoning-content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contents_contents: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-content-content.logical-reasoning-content-content'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-content.logical-reasoning-content'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    topic: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::logical-reasoning-topic.logical-reasoning-topic'
+    >;
+    type: Schema.Attribute.Enumeration<
+      [
+        'Overview',
+        'Content',
+        'Exam Specific Concept',
+        'Company Specific',
+        'FAQ',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLogicalReasoningSinglePageLogicalReasoningSinglePage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'logical_reasoning_single_pages';
+  info: {
+    displayName: 'Logical Reasoning Single Page';
+    pluralName: 'logical-reasoning-single-pages';
+    singularName: 'logical-reasoning-single-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-single-page.logical-reasoning-single-page'
+    > &
+      Schema.Attribute.Private;
+    logical_reasoning_content_content: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::logical-reasoning-content-content.logical-reasoning-content-content'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLogicalReasoningTopicLogicalReasoningTopic
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'logical_reasoning_topics';
+  info: {
+    displayName: 'Logical Reasoning Topic';
+    pluralName: 'logical-reasoning-topics';
+    singularName: 'logical-reasoning-topic';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    block: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::logical-reasoning-block.logical-reasoning-block'
+    >;
+    contents: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-content.logical-reasoning-content'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::logical-reasoning-topic.logical-reasoning-topic'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -953,6 +1156,11 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::course-page.course-page': ApiCoursePageCoursePage;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::logical-reasoning-block.logical-reasoning-block': ApiLogicalReasoningBlockLogicalReasoningBlock;
+      'api::logical-reasoning-content-content.logical-reasoning-content-content': ApiLogicalReasoningContentContentLogicalReasoningContentContent;
+      'api::logical-reasoning-content.logical-reasoning-content': ApiLogicalReasoningContentLogicalReasoningContent;
+      'api::logical-reasoning-single-page.logical-reasoning-single-page': ApiLogicalReasoningSinglePageLogicalReasoningSinglePage;
+      'api::logical-reasoning-topic.logical-reasoning-topic': ApiLogicalReasoningTopicLogicalReasoningTopic;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

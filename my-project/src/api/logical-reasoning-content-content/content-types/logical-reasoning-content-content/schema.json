@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "logical_reasoning_content_contents",
+  "info": {
+    "singularName": "logical-reasoning-content-content",
+    "pluralName": "logical-reasoning-content-contents",
+    "displayName": "Logical Reasoning Content_Content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["Overview", "Content", "Exam Specific Concept", "Company Specific", "FAQ"]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "content": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::logical-reasoning-content.logical-reasoning-content"
+    },
+    "logical_reasoning_single_pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::logical-reasoning-single-page.logical-reasoning-single-page",
+      "mappedBy": "logical_reasoning_content_content"
+    }
+  }
+}
